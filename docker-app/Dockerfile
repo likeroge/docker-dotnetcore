@@ -6,8 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["docker-app/docker-app.csproj", "docker-app/"]
-RUN dotnet restore "docker-app/docker-app.csproj"
+COPY ["docker-app.csproj", "docker-app/"]
+RUN dotnet restore "docker-app.csproj"
 COPY . .
 WORKDIR "/src/docker-app"
 RUN dotnet build "docker-app.csproj" -c Release -o /app/build
